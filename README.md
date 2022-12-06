@@ -1,40 +1,29 @@
 # Advent of Code 2022
 
+## Performance
 
+|  Day/Part    | Average Duration | Std Dev. |
+| ------------ | ---------------- | -------- |
+| Day 1 Part 1 | 1.80ms | 58.9µs |
+| Day 1 Part 2 | 1.85ms | 33.7µs |
+| Day 2 Part 1 | 6.17ms | 59.7µs |
+| Day 2 Part 2 | 5.34ms | 10.9µs |
+| Day 3 Part 1 | 4.90ms | 96.4µs |
+| Day 3 Part 2 | 3.08ms | 34.5µs |
+| Day 4 Part 1 | 21.1ms | 622µs |
+| Day 4 Part 2 | 20.7ms | 258µs |
+| Day 5 Part 1 | 4.67ms | 88.1µs |
+| Day 5 Part 2 | 5.10ms | 913µs |
+| Day 6 Part 1 | 7.10ms | 21.3µs |
+| Day 6 Part 2 | 25.5ms | 4.23µs |
+| ------------ | ---------------- | -------- |
+|              | Total Time: 107.31ms | ---- |
 
 ## Usage
 
-There are 25 namespaces, 25 input files 25 example input files, 25 tests, and 50 `lein` tasks. 
+Run the real input by using `lein run` or the example by `lein test` see below.
 
-1. Fill in the tests with the example solutions.
-1. Write your implementation.
-1. Fill in the final problem inputs into the `lein` task and run `lein run d01.p1`!
-
-```clojure
-(ns advent-of-code.day-01)
-
-(defn part-1
-  "Day 01 Part 1"
-  [input]
-  input)
-
-(defn part-2
-  "Day 01 Part 2"
-  [input]
-  input)
-```
-
-```clojure
-(ns advent-of-code.core-test
-  (:require [clojure.test :refer [deftest testing is]]
-            [advent-of-code.day-01 :refer [part-1 part-2]]
-            [clojure.java.io :refer [resource]]))
-
-(deftest part1
-  (let [expected nil]
-    (is (= expected (part-1 (slurp (resource "day-1-example.txt")))))))
-
-(deftest part2
-  (let [expected nil]
-    (is (= expected (part-2 (slurp (resource "day-1-example.txt")))))))
+```bash
+lein run d01.p1
+lein test :only advent-of-code.day-01-test
 ```
