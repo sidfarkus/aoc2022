@@ -1,5 +1,4 @@
-(ns advent-of-code.day-06
-  (:require [clojure.string :as str]))
+(ns advent-of-code.day-06)
 
 (defn part-1
   "Day 06 Part 1"
