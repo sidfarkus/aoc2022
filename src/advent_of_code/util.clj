@@ -2,8 +2,8 @@
   (:require [clojure.string :as cs]))
 
 (defn supersplit [delimiters str]
-  (case
+  (if
     (not-empty delimiters) (map (partial supersplit (rest delimiters)) (cs/split str (first delimiters)))
-    :else str))
+    str))
 
 (defn make-2d [column-delim str] (vec (map vec (supersplit [#"\n" column-delim] str))))
