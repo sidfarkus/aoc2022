@@ -19,9 +19,11 @@
 | Day 7 Part 1 | 6.15ms | 313µs |
 | Day 7 Part 2 | 7.13ms | 252µs |
 | Day 8 Part 1 | 79.1ms | 768µs |
-| Day 8 Part 1 | ms | µs |
+| Day 8 Part 2 | 124ms | 9.34µs |
+| Day 9 Part 1 | 146ms | 22.9µs |
+| Day 8 Part 2 | 1190ms | 27ms |
 | ------------ | ---------------- | -------- |
-|              | Total Time: 193.54ms | ---- |
+|              | Total Time: 1653.54ms | ---- |
 
 ## Usage
 
