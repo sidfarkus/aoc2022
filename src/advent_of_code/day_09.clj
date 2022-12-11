@@ -2,7 +2,7 @@
   (:require [advent-of-code.util :refer [supersplit]]))
 
 (defn norm [v] (vec (map #(if (> % 1) 1 (if (< % -1) -1 %)) v)))
-(defn dirmap [dir] ((hash-map "R", [1 0] "L", [-1 0] "U", [0 -1] "D", [0 1]) dir))
+(def dirmap (hash-map "R", [1 0] "L", [-1 0] "U", [0 -1] "D", [0 1]))
 (defn simulate [start head-moves]
   (reduce (fn [m move]
             (let [head (map + (m :head) move)
