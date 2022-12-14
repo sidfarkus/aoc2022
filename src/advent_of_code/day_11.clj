@@ -14,17 +14,15 @@
   (let [new-worry (quot ((monkey :op) item) decay)]
     [new-worry (if (= (mod new-worry (monkey :test)) 0) (monkey :truem) (monkey :falsem))]))
 
-(defn monkey-business [lcm decay monkeys round]
+(defn monkey-business [lcm decay monkeys _round]
   (reduce-kv
    (fn [m monkey-id _]
      (let [this-monkey (m monkey-id)
            thrown-items (group-by last (map (partial thrown-to decay this-monkey) (this-monkey :items)))
-           thrown-monkeys (mapcat (fn [[id worries]] [id (update (m id) :items #(apply conj (vec %) (map (fn [x] (mod x lcm)) (map first worries))))]) thrown-items)
-           return-monkeys (apply assoc m
-                                 monkey-id (assoc this-monkey :items [] :insp (+ (this-monkey :insp) (count (this-monkey :items))))
-                                 thrown-monkeys)]
-       return-monkeys))
-
+           thrown-monkeys (mapcat (fn [[id worries]] [id (update (m id) :items #(apply conj (vec %) (map (fn [x] (mod x lcm)) (map first worries))))]) thrown-items)]
+       (apply assoc m
+              monkey-id (assoc this-monkey :items [] :insp (+ (this-monkey :insp) (count (this-monkey :items))))
+              thrown-monkeys)))
    monkeys
    monkeys))
 
