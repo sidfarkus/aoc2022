@@ -10,6 +10,9 @@
     (map (partial supersplit (rest delimiters) fn) (cs/split to-split (first delimiters)))
     (fn to-split))))
 
+(defn zip [[h1 & rest1] [h2 & rest2]] 
+  (if (= h1 h2 nil) [] (concat [[h1 h2]] (zip rest1 rest2))))
+
 (defn make-grid
   ([column-delim str] (make-grid column-delim identity str))
   ([column-delim fn str] (vec (map vec (supersplit [#"\n" column-delim] fn str)))))
