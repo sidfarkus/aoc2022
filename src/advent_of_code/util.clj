@@ -70,6 +70,7 @@
      (fun (grid-get grid b) b)
      (fun (grid-get grid r) r)
      ]))
+
 (defn neighbors 
   "[top top-right right bot-right bottom bot-left left top-left]"
   ([grid x y fun]
@@ -82,3 +83,23 @@
         dirs [[x dec-y] [inc-x dec-y] [inc-x y] [inc-x inc-y] [x inc-y] [dec-x inc-y] [dec-x y] [dec-x dec-y]]]
     (map #(fun (grid-get grid %1) %1) dirs)))
   ([grid x y] (neighbors grid x y first-arg)))
+
+(defn neighbors-voxel
+  "[
+   <front->  top top-right right bot-right bottom bot-left left top-left middle
+   <middle-> top top-right right bot-right bottom bot-left left top-left
+   <back->   top top-right right bot-right bottom bot-left left top-left middle
+   ]"
+  ([space x y z fun]
+   (let [inc-y (inc y)
+         dec-y (dec y)
+         inc-x (inc x)
+         dec-x (dec x)
+         inc-z (inc z)
+         dec-z (dec z)
+         dirs [[x dec-y inc-z] [inc-x dec-y inc-z] [inc-x y inc-z] [inc-x inc-y inc-z] [x inc-y inc-z] [dec-x inc-y inc-z] [dec-x y inc-z] [dec-x dec-y inc-z] [x y inc-z]
+               [x dec-y z] [inc-x dec-y z] [inc-x y z] [inc-x inc-y z] [x inc-y z] [dec-x inc-y z] [dec-x y z] [dec-x dec-y z]
+               [x dec-y dec-z] [inc-x dec-y dec-z] [inc-x y dec-z] [inc-x inc-y dec-z] [x inc-y dec-z] [dec-x inc-y dec-z] [dec-x y dec-z] [dec-x dec-y dec-z] [x y dec-z]]
+         ]
+     (map #(fun (space %1) %1) dirs)))
+  ([space x y z] (neighbors-voxel space x y z first-arg)))
